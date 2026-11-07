@@ -118,5 +118,11 @@ version (and says so where the student would notice):
 | 5, Dæmi 5.2.3 | (py + 5)(py − 5) | (py + 5a)(py − 5a) |
 | 5, Dæmi 5.6.2 | 3(ax − 4y)² | 3(ax − 4z)² |
 | 5, answer 3(d) | (x + √3)(x − √3) | (a + √3)(a − √3) |
+| 6, answer 5(h) | nefnari … (x² − 3x + 9) | (x² + 3x + 9) |
+| 7, Dæmi 7.1 | x = 1 | x = −1 |
+| 7, Dæmi 7.3 | L = [−2, ∞[ | ]−2, ∞[ (strict inequality) |
+
+Chapters 6 (Bókstafabrot) and 7 (Jöfnur og ójöfnur) come from `Kafli 6.pdf` and `Kafli 7.pdf`; harder exercises are
+marked * as in the book, and the worked steps under the answers are written for the app.
 
 Chapter 5 is marked as a draft (*drög*) in the source PDF, and in the app.
