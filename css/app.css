@@ -150,3 +150,6 @@ nav.bottom button:disabled{opacity:.35; cursor:default}
 .setrow{display:flex; gap:.5rem; flex-wrap:wrap; align-items:center; margin:.5rem 0 1rem}
 .setrow button{min-height:3rem; min-width:3rem; padding:0 .9rem; border-radius:.6rem; border:2px solid var(--fg); background:var(--card); font-weight:700}
 .setrow button[aria-pressed="true"]{background:var(--accent); color:var(--accent-fg); border-color:var(--accent)}
+/* cancelled factor (styttur út): a diagonal slash, so it does not look like a minus sign */
+.cancel{position:relative; display:inline-block}
+.cancel::after{content:''; position:absolute; left:50%; top:50%; width:1.15em; margin-left:-.575em; border-top:2px solid currentColor; transform:rotate(-60deg)}

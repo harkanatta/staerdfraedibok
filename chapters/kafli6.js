@@ -5,7 +5,7 @@ Book.add((() => {
 const MS = (b, sub) => `${M(b)}<sub>${sub}</sub>`;
 const MINE = ' <small>(Svarið er ekki í bókinni.)</small>';
 const FM = (a, b) => F(M(a), M(b));          // fraction with maths on top and bottom
-const X = s => `<s>${s}</s>`;                 // crossed out (cancelled)
+const X = s => `<span class="cancel">${s}</span>`;   // cancelled: diagonal slash, as in the book
 
 return {
 n: 6,
