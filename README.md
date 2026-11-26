@@ -18,6 +18,8 @@ css/app.css         look and themes
 js/lib.js           helpers for writing maths (M, F, RT, STEPS, nl, venn3, …)
 js/app.js           the app itself (navigation, tabs, settings)
 chapters/kafliN.js  one file per chapter – all the content lives here
+chapters/aefingaprof.js  practice exam for chapters 5–8 (n: 100, shown as "Æfingapróf"
+                    via the optional `label` field; problems taken from the book)
 tools/check.mjs     checks the chapter files for mistakes
 netlify.toml        Netlify settings (runs the check before each deploy)
 ```

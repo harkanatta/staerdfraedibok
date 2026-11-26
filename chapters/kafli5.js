@@ -1,5 +1,7 @@
 /* Kafli 5 – Þáttun (drög)
-   Content transcribed from the draft chapter (pages 40–45 + answer key). */
+   Content transcribed from the draft chapter (pages 40–45 + answer key).
+   Theory for 5.6 and 5.7 (pages 47–49) is included so the practice exam can link to it;
+   their exercises (Æfing 5.6–5.7) are used in chapters/aefingaprof.js. */
 Book.add({
 n: 5,
 title: 'Þáttun',
@@ -69,7 +71,40 @@ ${EXMP('Dæmi 5.9 · Ágiskunaraðferðin', `Þáttum ${M('x^2 - 12x + 32')}`,
 ${EXMP('Dæmi 5.10 · Ágiskunaraðferðin', `Þáttum ${M('2ax^2 + 16ax - 40a')}`,
  'Byrjum á að taka út fyrir sviga og notum síðan ágiskunaraðferðina.' +
  TB([I('s'), I('p'), M('s + p'), ''], [['−1', '20', '19', ''], ['−2', '10', '8', '✓'], ['−4', '5', '1', ''], ['−5', '4', '−1', ''], ['−10', '2', '−8', ''], ['−20', '1', '−19', '']]) +
- STEPS(M('2ax^2 + 16ax - 40a = 2a(x^2 + 8x - 20)'), M('= <b>2a(x - 2)(x + 10)</b>')))}`}
+ STEPS(M('2ax^2 + 16ax - 40a = 2a(x^2 + 8x - 20)'), M('= <b>2a(x - 2)(x + 10)</b>')))}`},
+
+thridja: { t: '5.6 Þáttun með þriðjaveldisreglu', h: `
+${RULE('Regla 5.2 (Þriðjaveldisreglur)', `<b>${M('a^3 + b^3 = (a + b)(a^2 - ab + b^2)')}</b> &nbsp; fyrir samlagningu<br><b>${M('a^3 - b^3 = (a - b)(a^2 + ab + b^2)')}</b> &nbsp; fyrir mismun`)}
+<p><b>Sönnun:</b> Beitum dreifireglu á hægri hliðina og sýnum að útkoman sé sú sama og vinstra megin.</p>
+${STEPS(M('(a + b)(a^2 - ab + b^2) = a^3 - a^2b + ab^2 + a^2b - ab^2 + b^3 = a^3 + b^3'),
+ M('(a - b)(a^2 + ab + b^2) = a^3 + a^2b + ab^2 - a^2b - ab^2 - b^3 = a^3 - b^3') + ' ■')}
+${EXMP('Dæmi 5.14 · Þáttun með þriðjaveldisreglu', STEPS(
+ '1. ' + M('b^3 - 8a^3 = b^3 - (2a)^3 = <b>(b - 2a)(b^2 + 2ab + 4a^2)</b>'),
+ '2. ' + M('27p^3z + zx^3y^3 = z((3p)^3 + (xy)^3) = <b>z(3p + xy)(9p^2 - 3pxy + x^2y^2)</b>')))}
+${ATH('Ef bæði er hægt að nota samokareglu og þriðjaveldisreglu til að þátta þá byrjum við á því að nota <b>samokaregluna</b>.')}
+${EXMP('Dæmi 5.15 · Þáttun með samokareglu og þriðjaveldisreglu', `Þáttum ${M('64p^6 - y^6')}`, STEPS(
+ M('64p^6 - y^6 = (8p^3)^2 - (y^3)^2 = (8p^3 + y^3)(8p^3 - y^3)'),
+ M('= <b>(2p + y)(4p^2 - 2py + y^2)(2p - y)(4p^2 + 2py + y^2)</b>')))}`},
+
+svigi: { t: '5.7 Þáttun með því að taka sviga út fyrir sviga', h: `
+${EXMP('Dæmi 5.16 · Að taka sviga út fyrir sviga', `1. ${M('(a + 1)x - (a + 1)y')}`,
+ `Svigarnir eru eins. Þeir eru því sameiginlegur þáttur og við tökum sviga út fyrir sviga: ${M('(a + 1)x - (a + 1)y = <b>(a + 1)(x - y)</b>')}
+ <p>Til að sjá betur hvernig þetta virkar má skipta um stærð. Látum ${M('b = (a + 1)')}; þá er ${M('(a + 1)x - (a + 1)y = bx - by = b(x - y) = (a + 1)(x - y)')}.</p>`)}
+${EXMP('Dæmi 5.16 (frh.)', `2. ${M('3a + 6b - a^2 - 2ab')}`,
+ `Hér eru fjórir liðir og við skiptum stærðinni í tvennt: fyrstu tvo liðina saman og seinni tvo saman.` + STEPS(
+ M('3a + 6b - a^2 - 2ab = 3(a + 2b) - a(a + 2b)') + ' &nbsp;<small>fjórir liðir orðnir að tveimur</small>',
+ M('= <b>(a + 2b)(3 - a)</b>') + ' &nbsp;<small>tökum svigann, sem er eins í báðum liðum, út fyrir sviga</small>'))}
+${ATH('Þegar við þáttum með því að taka sviga út fyrir sviga ætlum við <b>ALLTAF</b> að sýna útreikninga með því að taka milliskrefið.')}
+${EXMP('Dæmi 5.17 · Samokareglan og svigi út fyrir sviga', `Þáttum ${M('a^2 - 9x^2 + a - 3x')}`, STEPS(
+ M('= a^2 - (3x)^2 + a - 3x') + ' &nbsp;<small>samokareglan á fyrstu tvo liðina</small>',
+ M('= (a + 3x)(a - 3x) + (a - 3x)') + ' &nbsp;<small>tökum svigann (a − 3x) út fyrir sviga</small>',
+ M('= (a - 3x)((a + 3x) + 1)'),
+ M('= <b>(a - 3x)(a + 3x + 1)</b>')))}
+${EXMP('Dæmi 5.18 · Að taka sviga í veldi út fyrir sviga', `Þáttum ${M('(x + 3)^5 - 2(x + 3)^4')}`, STEPS(
+ M('= (x + 3)^1 * (x + 3)^4 - 2(x + 3)^4') + ' &nbsp;<small>tökum (x + 3)<sup>4</sup> út fyrir sviga</small>',
+ M('= (x + 3)^4((x + 3)^1 - 2)'),
+ M('= (x + 3)^4(x + 3 - 2)'),
+ M('= <b>(x + 3)^4(x + 1)</b>')))}`}
 },
 
 exercises: [

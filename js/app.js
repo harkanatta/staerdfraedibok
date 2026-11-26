@@ -15,6 +15,8 @@
   let state = { ch: null, idx: 0, view: 'ex' };   // ch = chapter object, idx = exercise index
 
   const chByN = n => chapters.find(c => c.n === n);
+  /* a chapter may have its own label (e.g. the practice exam); otherwise "Kafli N" */
+  const chName = c => c.label || `Kafli ${c.n}`;
 
   /* theory key "lidun" = this chapter, "1:lidun" = chapter 1 */
   function theoryFor(key, ch) {
@@ -69,7 +71,7 @@
     const lastCh = store.get('lastCh', null);
     let h = `<h1>Veldu kafla</h1><ul class="chlist">`;
     for (const c of chapters) {
-      h += `<li><button data-ch="${c.n}"><span class="num">Kafli ${c.n}${c.n === lastCh ? ' · síðast opnað' : ''}</span>
+      h += `<li><button data-ch="${c.n}"><span class="num">${chName(c)}${c.n === lastCh ? ' · síðast opnað' : ''}</span>
         <span class="ttl">${c.title}</span><span class="cnt">${c.exercises.length} verkefni${c.draft ? ' · drög' : ''}</span></button></li>`;
     }
     main.innerHTML = h + '</ul>';
@@ -79,8 +81,8 @@
     const ch = state.ch, e = ch.exercises[state.idx], last = state.idx === ch.exercises.length - 1;
     const nextCh = chapters[chapters.indexOf(ch) + 1], prevCh = chapters[chapters.indexOf(ch) - 1];
     store.set('last_' + ch.n, state.idx); store.set('lastCh', ch.n);
-    document.title = `Kafli ${ch.n}, verkefni ${e.n}`;
-    $('where').innerHTML = `Kafli ${ch.n} · Verkefni ${e.n} <small>${state.idx + 1} af ${ch.exercises.length}${e.s ? ' · Æfing ' + e.s : ''}</small>`;
+    document.title = `${chName(ch)}, verkefni ${e.n}`;
+    $('where').innerHTML = `${chName(ch)} · Verkefni ${e.n} <small>${state.idx + 1} af ${ch.exercises.length}${e.s ? ' · Æfing ' + e.s : ''}</small>`;
     $('tabs').hidden = false; $('bottomNav').hidden = false;
     $('tabEx').setAttribute('aria-selected', state.view === 'ex');
     $('tabTh').setAttribute('aria-selected', state.view === 'th');
@@ -109,7 +111,7 @@
       let h = `<h1>Útskýring fyrir verkefni ${e.n}</h1>`;
       h += linked.map((t, i) => `<details ${i === 0 ? 'open' : ''}><summary>${t.t}</summary><div>${t.h}</div></details>`).join('');
       if (others.length) {
-        h += `<h2 class="sub-h">Annað efni í kafla ${ch.n}</h2>`;
+        h += `<h2 class="sub-h">Annað efni ${ch.label ? 'hér' : 'í kafla ' + ch.n}</h2>`;
         h += others.map(t => `<details><summary>${t.t}</summary><div>${t.h}</div></details>`).join('');
       }
       h += `<p><button class="btn wide" id="goEx">✏️ Aftur í verkefnið</button></p>`;
@@ -121,7 +123,7 @@
   function renderJump() {
     $('jumpWrap').hidden = !state.ch;
     if (!state.ch) return;
-    $('jumpTitle').textContent = `Verkefni í kafla ${state.ch.n}`;
+    $('jumpTitle').textContent = state.ch.label ? `Verkefni: ${state.ch.label}` : `Verkefni í kafla ${state.ch.n}`;
     $('jump').innerHTML = state.ch.exercises.map((e, i) =>
       `<button data-j="${i}" class="${i === state.idx ? 'cur' : ''}" aria-label="Verkefni ${e.n}">${e.n}</button>`).join('');
   }
