@@ -116,6 +116,8 @@ details>div{padding-bottom:.6rem}
 .rt{white-space:nowrap}
 .rt .ri{font-size:.6em; vertical-align:.9em; margin-right:-.35em; line-height:1}
 .rt .rad{border-top:2px solid currentColor; padding:0 .1em}
+sup .frac{font-size:1em; line-height:1.05; vertical-align:.15em; margin:0 .05em}
+sup .frac>.n{border-bottom-width:1px}
 .blank{display:inline-block; width:2.2em; border-bottom:3px solid currentColor; height:1em; vertical-align:baseline}
 svg.fig{display:block; width:100%; max-width:30rem; height:auto; margin:.5rem 0; color:var(--fg)}
 table.tbl{border-collapse:collapse; margin:0}
